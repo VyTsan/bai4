@@ -3,9 +3,14 @@ import Task from '../components/Task/Task'
 import './ex2.css'
 import { useState } from 'react';
 
-let tasks = [];
 
 const Ex2 = () => {
+  const [tasks, setTasks] = useState([])
+  function removeContent (i) {
+    let clone = [...tasks]
+    clone.splice(i, 1)
+    setTasks(clone);
+  }
   const [input, setInput] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,9 +18,11 @@ const Ex2 = () => {
       alert('You added an empty task!');
       return;
     }
-    tasks.push(<Task content={input}/>);
+    setTasks([...tasks,input]);
     setInput('');
+    console.log(tasks);
   }
+  
 
   return (
     <div style={{fontFamily: 'cursive'}}>
@@ -31,7 +38,7 @@ const Ex2 = () => {
         </form>
         <div className='box'>
           {tasks.map((task,index) => (
-              <div key={index}>{task}</div>
+              <Task key={index} content={task} i={index} removeContent={removeContent}/>
           ))}
         </div>
     </div>
