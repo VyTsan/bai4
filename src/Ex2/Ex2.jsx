@@ -7,9 +7,7 @@ import { useState } from 'react';
 const Ex2 = () => {
   const [tasks, setTasks] = useState([])
   function removeContent (i) {
-    let clone = [...tasks]
-    clone.splice(i, 1)
-    setTasks(clone);
+    setTasks([...tasks].filter((_,index) => index !== i))
   }
   const [input, setInput] = useState('');
   const handleSubmit = (e) => {
