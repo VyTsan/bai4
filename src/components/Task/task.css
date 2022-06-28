@@ -1,0 +1,22 @@
+.task {
+    width: 300px;
+    text-align: left;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    color: black;
+}
+
+.task * {
+    cursor: pointer;
+}
+
+.done {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.del {
+    display: none;
+    border: none;
+}
